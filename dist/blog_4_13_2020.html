@@ -1,0 +1,82 @@
+<head>
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=GA_TRACKING_ID"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-132451563-1');
+</script>
+</head>
+<style>
+
+body {
+	background-color: White;
+}
+
+hr {
+	color: black;
+	height: 1px;
+	border-width: 0;
+	background-color: black;
+}
+
+nav {
+	display: inline;
+}
+
+ul#menu li {
+	display:inline;
+}
+
+</style>
+
+<html>
+<img src="images/header-logo.png" alt="logo" class="inline"/>
+
+<ul id="menu">
+	<li><a href="about.html">About</a></li>
+	<li><a href="hummus.html">Hummus</a></li>
+	<li><a href="demos.html">Prods</a></li>
+	<li><a href="castlerex.html">Castle Rex</a></li>
+	<li><a href="reviews.html">Reviews</a></li>
+</ul>
+
+
+
+<h2>Inventory Selection</h2>
+<p>
+Back again!
+In the last entry I mentioned that I’ve been pondering on how to streamline the process of inventory selection.  One of the most common actions in point-and-click adventures is the trial and error process of using x on y, so it’s important to me that this scenario doesn’t frustrate the player.
+</p>
+
+<p>
+As in the last blog entry, my first approaches to this process emulated earlier works (by which I mean Shadowgate, always Shadowgate).  Even more so than with exits, the process of dragging the cursor to and from the inventory area is slow to an unignorable level.  There were a couple solutions I considered.  The first is a context menu approach where the player would click the object they wish to interact with to bring up a menu allowing them to select the item they wish to use on it.  The issue with this is that the player needs to repeatedly move the cursor down to the item they wish to select each time they want to do something.  This makes the trial and error process pretty slow.  
+</p>
+
+<p>
+The other solution is to have a separate area with its own persistent cursor.  This is what I settled on.  I haven’t actually finalized the way that this cursor will be moved, but the idea is that it is independent of the main cursor, which owns the joystick, and will therefore involve the keyboard in some way.  Here's the tentative solution I've settled on:
+</p>
+
+<img src="images/blog_4_13.gif" alt="inventory" class="inline"/>
+
+
+<p>
+I’ve also decided to use the text area to display the inventory instead of a separate side panel as I’ve done in drafts of the user interface up to this point.
+</p>
+
+<p>
+Another design change: I’ve switched from storing the sprites of the player’s items to just their names.  This does make the separate cursor implementation simpler, but it also addresses the serious memory problem posed by keeping all the item sprites in memory.  The current inventory capacity is set to 64.  If there are 64 128 byte sprites (for example), that’s 8KB of data just for the inventory sprites.  The names also must be stored in some capacity, and then there’s the matter of the descriptions.
+</p>
+
+<p>
+Descriptions, which are mandatory, pose the same challenge.  If each description is, again say 128 bytes, then we’re looking at another 8KB for those.  That is simply unacceptable.  Compression could help that somewhat, but a truly scalable approach is going to need to resort to offloading these to disk.  If I felt that adding thumbnails for inventory items would improve the experience, the same approach would work for those as well.
+</p>
+
+<p>
+Because I’m not tryna write my own DOS, my tentative thoughts are to use REL files to store these.  REL files store randomly accessible records of up to 254 bytes each.  For me, they’ve always been a solution in search of a problem in past projects, but this may finally be that problem.  My thought is to give each ID 128-254 bytes in a single REL file, which is accessed when the player “look”’s at that item.  This is a very low-priority item, so I’m not going to be addressing it anytime soon.
+</p>
+
+<p>
+And, that’s all for today’s entry.  Progress is going quick, so come back soon for more! :^)</p>
