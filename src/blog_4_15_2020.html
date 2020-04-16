@@ -1,0 +1,18 @@
+<!--=include header.html -->
+<a href="castlerex.html">Back to devlog</a>
+
+<p>
+Well kids, it was a day.  Let me say, first of all, that I successfully baked my first AND second loaves of sourdough! :)  I’ve already eaten about half a loaf.   It took me until today to really get this sourdough thing, but I do now. It’s actually really, really good and I’m proud to have made it myself.  I got the starter from my favorite bakery here in the ‘hood, a place called L’imprimerie.  It’s one of those oh so special places that just makes me happy, y’know?  Anyway, here it is:</p>
+<img src="images/bread_1.jpg" alt="bread" class="inline"/>
+<img src="images/bread_2.jpg" alt="bread" class="inline"/>
+
+<p>Wednesday is also the day I chat with some close friends over coffee and cookies! :)  This quarantine and its associated virus, which I am doing an expert job at not discussing despite my day to day life being utterly obliterated by, has meant that this gathering happened virtually (as it will for the forseeable future).  But it's still a great way...nay, the BEST way, to start a day.</p>
+
+<p>Now back to Rex. I talked about a lot of theoretical stuff in the last few posts and, though I did quietly implement most of it, the sprite workflow still existed mostly in writing.  There were lots of weird bugs with large sprites (honestly, still don’t know what was up there, buffer overflow?).  Anyway, it seems to have gone away after I fixed some indirect issues.</p>
+
+<p>I also extended the export tools to insert the callback/setup code for "things".  These are provided to the tool as assembly files, which get sent to cl65 (part of the cc65 suite), to be assembled.  The start address is computed by the tool to generate the proper offsets for the handler code.  It might be worth considering making these handlers relocatable as an alternative.  Once compression enters the fray, things threaten to get complicated.</p>
+
+<p>Aaaaand lastly, I made a few test sprites.  This spooky ghoulish fella’ and a lil’ bone at his feet.  This is closee enough to the v i b e I'm going for to give you some idea what the content might look like.</p>
+<img src="images/blog_4_15_2020.png" alt="sprites" class="inline"/>
+
+<p>Alright, that’s it for today.  Just cleaning things up, testing out more edge cases (more than 1 thing in the room), and getting everything hooked up.  Next on the agenda: importing the rest of the sprite data (that’s just name and description).  Once that’s done, everything will be wired up and ready for action! Yeah, budddy!! B^)</p>
