@@ -1,0 +1,75 @@
+<head>
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=GA_TRACKING_ID"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-132451563-1');
+</script>
+</head>
+<style>
+
+body {
+	background-color: White;
+}
+
+img {
+	    image-orientation: from-image;
+}
+
+hr {
+	color: black;
+	height: 1px;
+	border-width: 0;
+	background-color: black;
+}
+
+nav {
+	display: inline;
+}
+
+ul#menu li {
+	display:inline;
+}
+
+</style>
+
+<html>
+<img src="images/header-logo.png" alt="logo" class="inline"/>
+
+<ul id="menu">
+	<li><a href="about.html">About</a></li>
+	<li><a href="hummus.html">Hummus</a></li>
+	<li><a href="demos.html">Prods</a></li>
+	<li><a href="castlerex.html">Castle Rex</a></li>
+	<li><a href="reviews.html">Reviews</a></li>
+</ul>
+<hr>
+
+<a href="castlerex.html">Back to devlog</a>
+
+<p>Progress was a little slower the last few days, unfortunately.</p>
+
+<p>I've done a bit additional pixelling.  On the code front, the last few days have been focused on
+cleaning up various rough edges.  Those include a few regressions.  I had offset the spare RAM
+buffer, forgetting that it needs to be aligned on a page bounday.  This caused a few issues in
+some self modfiying code that was just setting the LSB of the target addresses.  Ultimately this
+led to some visual issues in the sprite rendering.</p>
+
+<p>As far as new features go, I've been working on the "effects" part of the engine.
+The purpose of this is to give some visual flair to various actions.  It's bascially
+a higher level layer that sits ontop of the bitmap API, which sets/resets pixels.
+Currently, it supports lines (horizontal and vertical), and flashes, which are done
+by writing to the VIC's screen color register, $900f. So, it is quite primitive.
+</p>
+
+<p>The bitmap manipulating actions are bounded by the room's visible area, which is an
+intentional limitation to allow the operations to be undone by restoring the room data
+from a back buffer.</p>
+
+<p>Finally, although it isn't implemented yet :D, the operations <i>should</i> honor
+a stroke width.</p>
+
+<p>As always, hope you all are well. Til next time :) I'm making another loaf of bread on Friday or Saturday, can't wait!</p>
