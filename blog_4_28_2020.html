@@ -1,0 +1,89 @@
+<head>
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=GA_TRACKING_ID"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-132451563-1');
+</script>
+</head>
+<style>
+
+body {
+	background-color: White;
+}
+
+img {
+	    image-orientation: from-image;
+}
+
+hr {
+	color: black;
+	height: 1px;
+	border-width: 0;
+	background-color: black;
+}
+
+nav {
+	display: inline;
+}
+
+ul#menu li {
+	display:inline;
+}
+
+</style>
+
+<html>
+<img src="images/header-logo.png" alt="logo" class="inline"/>
+
+<ul id="menu">
+	<li><a href="about.html">About</a></li>
+	<li><a href="hummus.html">Hummus</a></li>
+	<li><a href="demos.html">Prods</a></li>
+	<li><a href="castlerex.html">Castle Rex</a></li>
+	<li><a href="reviews.html">Reviews</a></li>
+</ul>
+<hr>
+
+<a href="castlerex.html">Back to devlog</a>
+
+<h2>Sound</h2>
+<p>After grinding on unrewarding bugfixes for a few days, I decided to take a 
+break to work on a new feature: audio.  The sound player I'm using was
+developed by 4mat of Orb.  It was used in the Orb Megademo quite a few years
+back which, to this day, has some of the only tolerable music I've heard
+from the Vic-20.</p>
+<p>When it comes to audio, the Vic could not be more unlike its successor.  The engineer behind
+the Commodore 64's SID had a solid musical background, and his involvement as well
+as the chip real estate produced the legendary sound that is still used by
+musicians today.<p>
+<p>The Vic-20, on the other hand, has <i>very</i> limited audio capabilities.
+The Vic-20's audio capabilities are crammed alongside the 6560/6561 (the same
+chip resonsible for video ouput), and its three voices are harsh square waves.
+The frequencies produced by these voices have only a 7-bit range, and these
+frequencies are often out of pitch with standard Western musical frequencies.</p>
+<p>For this reason, most innovation in producing music from the Vic-20 in recent
+years seems to focused on sampling techniques.  However, the crudeness of the
+Vic's audio is part of its charm, so I'm choosing to use a simpler player for this
+game to preserve that flavor.</p>
+<p>4mat's player works like most sequencing players.  Songs are comprised of three
+parts: songs, patterns, and instruments.  Songs sequence the patterns that are
+played, patterns play notes, change instruments, etc.  And instruments tell
+the player how to alter notes as they are played (arpeggiate, etc).</p>
+<p>Unfortunately, the only song I have made is a crude rendition of Jingle Bells
+I made for an unreleased disk mag, and that's gonna be there for the forseeable
+future.  I downloaded Renoise to mess around with, but that'll be an ongoing
+process.  After composing in Renoise, I'll most likely transcribe and hand-encode the songs
+into data files.</p>
+<p>Of course, in addition to music, we need sound effects.  The current system
+for these is mostly placeholder, but it basically overrides the song driver
+to play a different sound for a given duration.  The alternative would be
+to mix the sound effect with the song.  Many sounds can probably be achieved 
+with just the Vic's noise channel, so I might explore using the 3 oscillators
+for music and the noise channel for fx (with the option to also use 1 or
+more oscillator).</p>
+<p>That's it for now!  I've moved on from sound and been doing quite a bit of work 
+alongside writing this, so hopefully I'll see you again in a blog post soon. ;)</p>
